@@ -2,23 +2,65 @@
 %	For setup that must follow metadata included in the document
 %
 
+\definecolor{MSBlue}{rgb}{.204,.353,.541}
+\definecolor{MSLightBlue}{rgb}{.31,.506,.741}
+
+\captionsetup{margin=10pt,font={small,sf,color=MSBlue}}
+
 \usepackage[
+    colorlinks=true,
+    linkcolor=MSBlue,
+    urlcolor=MSBlue,
+    citecolor=MSBlue,
+    filecolor=MSBlue,
+    breaklinks,
 	plainpages=false,
 	pdfpagelabels,
 	pdftitle={\mytitle},
 	pagebackref,
 	pdfauthor={\myauthor},
-	pdfkeywords={\keywords}
+	pdfkeywords={\keywords},
+	unicode
 	]{hyperref}
 \usepackage{memhfixc}
 
 
 \input{mmd-title}
 
+% Sets up 4 cm margins
+\setlrmarginsandblock{4cm}{*}{*}
+\setulmarginsandblock{4cm}{*}{*}
+\checkandfixthelayout
+
+\defaultfontfeatures{Scale=MatchLowercase} % To adjust all used fonts to the same x−height => Harmonization
+\setmainfont[Mapping=tex-text]{Adobe Jenson Pro}
+\setmonofont[Scale=0.8]{Monaco} 
+
+% Change chapter style to default hangnum style of Memoir (see page 86 of the Memoir manual for the source), but with modifications to color, spacing and font size
+\makechapterstyle{hangnum}{%
+  \setlength{\afterchapskip}{20pt} % Modification: decrease default vertical space after chapter
+  \renewcommand*{\chapnumfont}{\chaptitlefont}
+  \settowidth{\chapindent}{\chapnumfont 999}
+  \renewcommand*{\chapnamefont}{\normalfont\LARGE\sffamily\color{MSBlue}} % Modification: decrease default font size and make chapter title display in dark red color
+  \renewcommand*{\chaptitlefont}{\normalfont\LARGE\sffamily\color{MSBlue}} % Modification: decrease default font size and make chapter title display in dark red color
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\chapnumfont}{\chaptitlefont}
+  \renewcommand*{\printchapternum}{%
+    \noindent\llap{\makebox[\chapindent][l]{%
+    \chapnumfont \thechapter}}}
+  \renewcommand*{\afterchapternum}{}
+}
+\chapterstyle{hangnum} % Activate chapter style again for changes to take effect (not sure if it’s necessary for chapter styles too?)
+
+% Modifications to section style (see page 103 of the Memoir manual and further)
+\hangsecnum % Makes sectional numbers hang in the margin
+\setsecheadstyle{\normalfont\Large\sffamily\color{MSLightBlue}} % Display section in small capitals and in dark red color
+\setsubsecheadstyle{\normalfont\large\sffamily\color{MSLightBlue}} % Display section in small capitals and in dark red color
 
 \begin{document}
 
-\title{\mytitle}
+\title{\textcolor{MSBlue}{\mytitle}}
 \author{\myauthor}
 
 \mainmatter
