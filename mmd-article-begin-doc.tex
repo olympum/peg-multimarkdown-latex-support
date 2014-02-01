@@ -2,12 +2,13 @@
 %	For setup that must follow metadata included in the document
 %
 
-% \definecolor{MSBlue}{rgb}{.204,.353,.541}
-% \definecolor{MSLightBlue}{rgb}{.31,.506,.741}
+\definecolor{MSBlue}{rgb}{.204,.353,.541}
+\definecolor{MSLightBlue}{rgb}{.31,.506,.741}
 
-\definecolor{AppleTitle}{gray}{.2}
-\definecolor{AppleChapter}{gray}{.5}
-\definecolor{AppleSection}{gray}{.6}
+\definecolor{AppleTitle}{RGB}{22,154,68}
+\definecolor{AppleChapter}{RGB}{6,132,174}
+\definecolor{AppleSection}{RGB}{22,154,68}
+\definecolor{AppleText}{gray}{.3}
 
 \captionsetup{margin=10pt,font={small,sf,color=AppleChapter}}
 
@@ -37,7 +38,7 @@
 \checkandfixthelayout
 
 \defaultfontfeatures{Scale=MatchLowercase} % To adjust all used fonts to the same x−height => Harmonization
-\setmainfont[Mapping=tex-text,Color=AppleTitle]{Verdana}
+\setmainfont[Mapping=tex-text,Color=AppleText]{Avenir Next}
 \setmonofont[Scale=0.8]{Menlo}
 
 % Change chapter style to default hangnum style of Memoir (see page 86 of the Memoir manual for the source), but with modifications to color, spacing and font size
@@ -59,23 +60,35 @@
 
 % Modifications to section style (see page 103 of the Memoir manual and further)
 \hangsecnum % Makes sectional numbers hang in the margin
-\setsecheadstyle{\normalfont\Large\sffamily\color{AppleSection}} % Display section in small capitals
-\setsubsecheadstyle{\normalfont\large\sffamily\color{AppleSection}} % Display section in small capitals
+\setsecheadstyle{\normalfont\Large\sffamily\color{AppleSection}} % Display color
+\setsubsecheadstyle{\normalfont\large\sffamily\color{AppleSection}} % Display color
+\setsecnumformat{} % No numbers
+\def\sectionmark#1{\markboth{#1}{#1}}
+
+\newlength\drop
+\makeatletter
+\newcommand*\titleM{\begingroup% Misericords, T&H p 153
+\setlength\drop{0.08\textheight}
+\centering
+\vspace*{\drop}
+{\Huge\bfseries \textcolor{blue}{\mytitle}}\\[\baselineskip]
+{\scshape \textcolor{red}{\subtitle}}\\[\baselineskip]
+\vfill
+{\large \myauthor}\par
+\vfill
+{\scshape \@date}\par
+\vspace*{2\drop}
+\endgroup}
+\makeatother
 
 \begin{document}
 
 \VerbatimFootnotes
-\title{\textcolor{AppleTitle}{\mytitle}}
-\author{\myauthor}
-
-\ifx\mydate\undefined
-\else
-	\date{\mydate}
-\fi
 
 \mainmatter
-\maketitle
 
+\begin{titlingpage}
+\titleM
 
 % Copyright
 \setlength{\parindent}{0pt}
@@ -86,4 +99,5 @@
 \fi
 
 \setlength{\parindent}{1em}
+\end{titlingpage}
 
