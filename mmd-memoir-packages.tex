@@ -6,22 +6,17 @@
 \usepackage{graphicx}           % To enable including graphics in pdf's
 \usepackage{booktabs}			% Better tables
 \usepackage{tabulary}			% Support longer table cells
-<<<<<<< HEAD
 \usepackage{fontspec}           % handle fonts for UTF-8 in XeTeX
 \usepackage{xunicode}           % For XeTeX
 \usepackage{xltxtra}            % For XeTeX
 %\usepackage[T1]{fontenc}		% Use T1 font encoding for accented characters
-\usepackage{xcolor}				% Allow for color (annotations)
-\usepackage{listings}			% Allow for source code highlighting
-\usepackage[sort&compress]{natbib} % Better bibliography support
-\usepackage{caption}
-
-\VerbatimFootnotes
-=======
-\usepackage[T1]{fontenc}		% Use T1 font encoding for accented characters
 \usepackage[utf8x]{inputenc}		% For UTF-8 support
+\usepackage{caption}
 \usepackage{xcolor}				% Allow for color (annotations)
 \usepackage{listings}			% Allow for source code highlighting
 \usepackage[sort&compress]{natbib} % Better bibliography support
 \usepackage{acronym}			% Support acronyms
->>>>>>> 39e96e5cf00f358e7330bdfb83f24d46d129f1a5
+
+\DeclareTextCommand{\nobreakspace}{T1}{\leavevmode\nobreak\ }
+
+\VerbatimFootnotes
