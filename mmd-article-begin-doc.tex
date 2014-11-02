@@ -60,7 +60,7 @@
 
 % Modifications to section style (see page 103 of the Memoir manual and further)
 \hangsecnum % Makes sectional numbers hang in the margin
-\setsecheadstyle{\normalfont\Large\sffamily\color{AppleSection}} % Display color
+\setsecheadstyle{\normalfont\Large\sffamily\color{AppleChapter}} % Display color
 \setsubsecheadstyle{\normalfont\large\sffamily\color{AppleSection}} % Display color
 \setsecnumformat{} % No numbers
 \def\sectionmark#1{\markboth{#1}{#1}}
@@ -71,8 +71,8 @@
 \setlength\drop{0.08\textheight}
 \centering
 \vspace*{\drop}
-{\Huge\bfseries \textcolor{blue}{\mytitle}}\\[\baselineskip]
-{\scshape \textcolor{red}{\subtitle}}\\[\baselineskip]
+{\Huge\bfseries \textcolor{AppleTitle}{\mytitle}}\\[\baselineskip]
+{\scshape \textcolor{AppleChapter}{\subtitle}}\\[\baselineskip]
 \vfill
 {\large \myauthor}\par
 \vfill
@@ -87,7 +87,7 @@
 
 \mainmatter
 
-\begin{titlingpage}
+%\begin{titlingpage}
 \titleM
 
 % Copyright
@@ -99,5 +99,5 @@
 \fi
 
 \setlength{\parindent}{1em}
-\end{titlingpage}
+%\end{titlingpage}
 
